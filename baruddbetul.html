@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction() {
+            
+          document.getElementById("totalEmisi").innerHTML = hitungEmisi(document.getElementById("jarakTempuh").value,document.getElementById("frekuensi").value,'Bus');
+        }
+        function myFunctionMobilbensin() {
+            
+            document.getElementById("totalEmisiMobilbensin").innerHTML = hitungEmisi(document.getElementById("jarakTempuhMobilbensin").value,document.getElementById("frekuensiMobilbensin").value,'Mobilbensin');
+        }
+        function myFunctionSepeda() {
+            
+          document.getElementById("totalEmisiSepeda").innerHTML = hitungEmisi(document.getElementById("jarakTempuhSepeda").value,document.getElementById("frekuensiSepeda").value,'Sepeda');
+        }
+        function myFunctionKeretaapi() {
+            
+          document.getElementById("totalEmisiKeretaapi").innerHTML = hitungEmisi(document.getElementById("jarakTempuhKeretaapi").value,document.getElementById("frekuensiKeretaapi").value,'Keretaapi');
+        }
+        function myFunctionMotor() {
+            
+          document.getElementById("totalEmisiMotor").innerHTML = hitungEmisi(document.getElementById("jarakTempuhMotor").value,document.getElementById("frekuensiMotor").value,'Motor');
+        }
+        function myFunctionJalankaki() {
+            
+          document.getElementById("totalEmisiJalankaki").innerHTML = hitungEmisi(document.getElementById("jarakTempuhJalankaki").value,document.getElementById("frekuensiJalankaki").value,'Jalankaki');
+        }
+        class EmisiKarbon {
+  constructor(jarakTempuh, frekuensi, faktorEmisi) {
+    this.jarakTempuh = jarakTempuh;
+    this.frekuensi = frekuensi;
+    this.faktorEmisi = faktorEmisi;
+  }
+  
+  totalEmisiKarbon() {
+    return this.jarakTempuh * this.frekuensi * this.faktorEmisi;
+  }
+}
+
+function hitungEmisi(jarakTempuh,frekuensi,jenis){
+    switch(jenis){
+        case 'Mobilbensin':
+            return new EmisiKarbon(jarakTempuh, frekuensi, 0.192).totalEmisiKarbon();
+        case 'Bus':
+            return new EmisiKarbon(jarakTempuh, frekuensi, 0.105).totalEmisiKarbon();
+        case 'Keretaapi':
+            return new EmisiKarbon(jarakTempuh, frekuensi, 0.41).totalEmisiKarbon();
+        case 'Motor':
+            return new EmisiKarbon(jarakTempuh, frekuensi, 0.103).totalEmisiKarbon();
+        case 'Sepeda':
+            return new EmisiKarbon(jarakTempuh, frekuensi, 0).totalEmisiKarbon();
+        case 'Jalankaki':
+            return new EmisiKarbon(jarakTempuh, frekuensi, 0).totalEmisiKarbon();
+            default:
+            return '';
+    }
+}
+console.log(hitungEmisi(10,10,'Mobil bensin'));
+ 
+        </script>
+</head>
+<body>
+    Bus
+    <hr>
+    <!-- <form action="/action_page.php"> -->
+        <label for="fname">Jarak Tempuh:</label>
+        <input type="text" id="jarakTempuh" name="fname"><br><br>
+        <label for="lname">Frekuensi:</label>
+        <input type="text" id="frekuensi" name="lname"><br><br>
+        <label for="fname">Total Emisi:</label>
+        <h6 id="totalEmisi"></h6>
+        <!-- <input type="text" id="totalEmisi" name="fname"> -->
+        <br><br>
+        <input  onclick="myFunction()" type="submit" value="Submit">
+      <!-- </form> -->
+       <br>
+       <br>
+       <hr>
+    Mobilbensin
+    <hr>
+    <!-- <form action="/action_page.php"> -->
+        <label for="fname">Jarak Tempuh:</label>
+        <input type="text" id="jarakTempuhMobilbensin" name="fname"><br><br>
+        <label for="lname">Frekuensi:</label>
+        <input type="text" id="frekuensiMobilbensin" name="lname"><br><br>
+        <label for="fname">Total Emisi:</label>
+        <h6 id="totalEmisiMobilbensin"></h6>
+        <!-- <input type="text" id="totalEmisi" name="fname"> -->
+        <br><br>
+        <input  onclick="myFunctionMobilbensin()" type="submit" value="Submit">
+      <!-- </form> -->
+       <br>
+       <br>
+       <hr>
+    Sepeda
+    <hr>
+    <!-- <form action="/action_page.php"> -->
+        <label for="fname">Jarak Tempuh:</label>
+        <input type="text" id="jarakTempuhSepeda" name="fname"><br><br>
+        <label for="lname">Frekuensi:</label>
+        <input type="text" id="frekuensiSepeda" name="lname"><br><br>
+        <label for="fname">Total Emisi:</label>
+        <h6 id="totalEmisiSepeda"></h6>
+        <!-- <input type="text" id="totalEmisi" name="fname"> -->
+        <br><br>
+        <input  onclick="myFunctionSepeda()" type="submit" value="Submit">
+      <!-- </form> -->
+       <br>
+       <br>
+       <hr>
+    Keretaapi
+    <hr>
+    <!-- <form action="/action_page.php"> -->
+         <label for="fname">Jarak Tempuh:</label>
+        <input type="text" id="jarakTempuhKeretaapi" name="fname"><br><br>
+        <label for="lname">Frekuensi:</label>
+        <input type="text" id="frekuensiKeretaapi" name="lname"><br><br>
+        <label for="fname">Total Emisi:</label>
+        <h6 id="totalEmisiKeretaapi"></h6>
+        <!-- <input type="text" id="totalEmisi" name="fname"> -->
+        <br><br>
+        <input  onclick="myFunctionKeretaapi()" type="submit" value="Submit">
+      <!-- </form> -->
+       <br>
+       <br>
+       <hr>
+    Motor
+    <hr>
+    <!-- <form action="/action_page.php"> -->
+          <label for="fname">Jarak Tempuh:</label>
+        <input type="text" id="jarakTempuhMotor" name="fname"><br><br>
+        <label for="lname">Frekuensi:</label>
+        <input type="text" id="frekuensiMotor" name="lname"><br><br>
+        <label for="fname">Total Emisi:</label>
+        <h6 id="totalEmisiMotor"></h6>
+        <!-- <input type="text" id="totalEmisi" name="fname"> -->
+        <br><br>
+        <input  onclick="myFunctionMotor()" type="submit" value="Submit">
+      <!-- </form> -->
+       <br>
+       <br>
+       <hr>
+    Jalankaki
+    <hr>
+    <!-- <form action="/action_page.php"> -->
+          <label for="fname">Jarak Tempuh:</label>
+        <input type="text" id="jarakTempuhJalankaki" name="fname"><br><br>
+        <label for="lname">Frekuensi:</label>
+        <input type="text" id="frekuensiJalankaki" name="lname"><br><br>
+        <label for="fname">Total Emisi:</label>
+        <h6 id="totalEmisiJalankaki"></h6>
+        <!-- <input type="text" id="totalEmisi" name="fname"> -->
+        <br><br>
+        <input  onclick="myFunctionJalankaki()" type="Submit" value="Submit">
+      <!-- </form> -->
+       <br>
+</body>
+</html>
